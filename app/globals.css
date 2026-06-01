@@ -44,6 +44,25 @@ body {
   padding: 0.1em 0;
 }
 
+/* ── Kontinuierliche Drehung für das Motto ── */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-text {
+  /* dreht den Text einmal alle 8 Sekunden endlos im Kreis */
+  animation: spin 8s linear infinite;
+  /* inline-block, damit transform greift und Rotation um die Textmitte erfolgt */
+  display: inline-block;
+  transform-origin: center;
+}
+
 /* ── Akzentlinie ── */
 
 .accent-bar {
