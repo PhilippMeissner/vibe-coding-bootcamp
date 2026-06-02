@@ -3,15 +3,54 @@
 @tailwind utilities;
 
 :root {
-  --color-accent: #E8503E;
-  --color-dark: #1A1A2E;
+  --color-accent: #9B4520;
+  --color-dark: #2C1610;
+  --color-forest: #2D5A1B;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #FFFFFF;
+  background: #2A1A0E;
   color: var(--color-dark);
+}
+
+/* ── Herbst-Blätter: Fallanimationen ── */
+
+@keyframes leaf-fall-1 {
+  0%   { transform: translate(  0px,  -30px) rotate(  0deg); opacity: 0;    }
+  5%   { opacity: 0.84; }
+  20%  { transform: translate( 50px,  22vh)  rotate(130deg); }
+  45%  { transform: translate(-35px,  48vh)  rotate(280deg); }
+  70%  { transform: translate( 40px,  74vh)  rotate(410deg); opacity: 0.72; }
+  100% { transform: translate(-10px, 110vh)  rotate(530deg); opacity: 0;    }
+}
+
+@keyframes leaf-fall-2 {
+  0%   { transform: translate(  0px,  -30px) rotate( 30deg); opacity: 0;    }
+  8%   { opacity: 0.88; }
+  25%  { transform: translate(-60px,  26vh)  rotate(170deg); }
+  50%  { transform: translate( 45px,  52vh)  rotate(340deg); }
+  75%  { transform: translate(-30px,  76vh)  rotate(480deg); opacity: 0.64; }
+  100% { transform: translate( 15px, 110vh)  rotate(550deg); opacity: 0;    }
+}
+
+@keyframes leaf-fall-3 {
+  0%   { transform: translate(  0px,  -30px) rotate(-15deg); opacity: 0;    }
+  6%   { opacity: 0.80; }
+  30%  { transform: translate( 70px,  28vh)  rotate(110deg); }
+  55%  { transform: translate(-50px,  56vh)  rotate(260deg); }
+  80%  { transform: translate( 35px,  82vh)  rotate(400deg); opacity: 0.60; }
+  100% { transform: translate(-20px, 110vh)  rotate(480deg); opacity: 0;    }
+}
+
+@keyframes leaf-fall-4 {
+  0%   { transform: translate(  0px,  -30px) rotate( 45deg); opacity: 0;    }
+  10%  { opacity: 0.76; }
+  35%  { transform: translate(-75px,  33vh)  rotate(190deg); }
+  60%  { transform: translate( 55px,  62vh)  rotate(360deg); }
+  85%  { transform: translate(-40px,  88vh)  rotate(500deg); opacity: 0.52; }
+  100% { transform: translate( 20px, 110vh)  rotate(560deg); opacity: 0;    }
 }
 
 /* ── Shimmer-Effekt für das Motto ── */
@@ -28,13 +67,13 @@ body {
 .shimmer-text {
   background: linear-gradient(
     90deg,
-    var(--color-dark) 0%,
-    #6B7280 20%,
-    var(--color-accent) 40%,
-    #F97066 50%,
-    var(--color-accent) 60%,
-    #6B7280 80%,
-    var(--color-dark) 100%
+    #F5E6C8 0%,
+    #EDD09A 20%,
+    #FFE08A 40%,
+    #FFF4C2 50%,
+    #FFE08A 60%,
+    #EDD09A 80%,
+    #F5E6C8 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -42,6 +81,7 @@ body {
   -webkit-text-fill-color: transparent;
   animation: shimmer 7s ease-in-out infinite;
   padding: 0.1em 0;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.65)) drop-shadow(0 1px 3px rgba(0,0,0,0.45));
 }
 
 /* ── Akzentlinie ── */

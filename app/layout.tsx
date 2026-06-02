@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import AutumnBackground from "@/components/AutumnBackground";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
 });
 
 export const metadata: Metadata = {
@@ -19,8 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" className={inter.variable}>
-      <body className={inter.className}>{children}</body>
+    <html lang="de" className={`${inter.variable} ${playfair.variable}`}>
+      <body className={inter.className}>
+        <AutumnBackground />
+        {children}
+      </body>
     </html>
   );
 }
