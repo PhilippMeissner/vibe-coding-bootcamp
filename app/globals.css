@@ -5,13 +5,30 @@
 :root {
   --color-accent: #E8503E;
   --color-dark: #1A1A2E;
+  --color-bg: #3c1fdd;
+  
+  /* 1. Das Gelb als Variable für ältere Monitore anlegen */
+  --color-text: #fee768;
+}
+
+/* Für moderne Displays überschreiben wir die Variablen mit den P3-Farben */
+@supports (background: color(display-p3 0 0 0)) {
+  :root {
+    --color-bg: color(display-p3 0.239 0.118 0.866);
+    --color-text: color(display-p3 0.994 0.904 0.408);
+  }
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #FFFFFF;
-  color: var(--color-dark);
+  background: var(--color-bg);
+  /* Hier weisen wir der Schrift das neue Gelb zu */
+  color: var(--color-text);
+
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+/* HIER DIE STANDARDGRÖSSE EINTRAGEN */
+  font-size: 16px;
 }
 
 /* ── Shimmer-Effekt für das Motto ── */
@@ -27,14 +44,14 @@ body {
 
 .shimmer-text {
   background: linear-gradient(
-    90deg,
-    var(--color-dark) 0%,
+    70deg,
+    var(--color-text) 0%,
     #6B7280 20%,
-    var(--color-accent) 40%,
+    var(--color-text) 40%,
     #F97066 50%,
-    var(--color-accent) 60%,
+    var(--color-text) 60%,
     #6B7280 80%,
-    var(--color-dark) 100%
+    var(--color-text) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -42,13 +59,50 @@ body {
   -webkit-text-fill-color: transparent;
   animation: shimmer 7s ease-in-out infinite;
   padding: 0.1em 0;
+  
+  /* HIER DIE GRÖSSE UND DICHTE EINTRAGEN */
+  font-size: 3.8rem;       /* Entspricht 48px */
+  font-weight: 900;      /* Macht die Schrift extrem fett, genau wie auf der Website */
 }
 
 /* ── Akzentlinie ── */
 
 .accent-bar {
-  width: 48px;
-  height: 4px;
-  background: var(--color-accent);
-  border-radius: 2px;
+  width: 0%;
+  height: 1px;
+  background: var(--color-text);
+  border-radius: 1px;
+  
 }
+/* ── Akzentlinie ── */
+
+.accent-bar {
+  width: 0%;
+  height: 1px;
+  background: var(--color-text);
+  border-radius: 1px;
+} /* <── Hier wird die Akzentlinie sauber geschlossen! */
+
+
+/* ── PULSIEREN BEI HOVER (Steht jetzt frei für sich) ── */
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05); 
+    opacity: 0.8;          
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.shimmer-text:hover {
+  animation: shimmer 7s ease-in-out infinite, pulse 1.5s ease-in-out infinite;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+} /* <── Hier wird der Hover-Effekt sauber geschlossen! */
