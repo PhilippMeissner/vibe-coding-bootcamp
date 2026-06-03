@@ -1,54 +1,200 @@
+/* ── Vintage-Schreibmaschinen-/Monospace-Schrift ── */
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-accent: #E8503E;
-  --color-dark: #1A1A2E;
+  --gold: #d9a441;
+  --amber: #c87b30;
+  --ember: #a8521d;
+  --cream: #e8d3a8;
+  --cream-dim: #b89b72;
+  --bg-deep: #120d09;
+  --bg-mid: #1a1410;
+  --bg-warm: #241a12;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #FFFFFF;
-  color: var(--color-dark);
+  font-family: "Special Elite", "VT323", monospace;
+  color: var(--cream);
+  background:
+    radial-gradient(circle at 50% 8%, rgba(217, 164, 65, 0.12), transparent 55%),
+    radial-gradient(circle at 50% 120%, rgba(168, 82, 29, 0.1), transparent 60%),
+    linear-gradient(180deg, var(--bg-mid) 0%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
-/* ── Shimmer-Effekt für das Motto ── */
+/* ── Layout ── */
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
+.retro-main {
+  position: relative;
+  font-family: "Special Elite", "VT323", monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.retro-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem 1.5rem;
+  z-index: 1;
+}
+
+/* ── Filmkorn / leichter Vignetten-Look ── */
+
+.scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0) 3px,
+      rgba(0, 0, 0, 0.12) 4px,
+      rgba(0, 0, 0, 0.12) 5px
+    ),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* ── Motto / Typing-Effekt ── */
+
+.motto-wrap {
+  text-align: center;
+  max-width: 60rem;
+}
+
+.motto-text {
+  margin: 0;
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  color: var(--cream);
+  text-shadow:
+    0 0 1px rgba(232, 211, 168, 0.4),
+    0 1px 18px rgba(217, 164, 65, 0.28);
+}
+
+.accent-gold {
+  color: var(--gold);
+  text-shadow:
+    0 0 1px rgba(217, 164, 65, 0.5),
+    0 1px 22px rgba(217, 164, 65, 0.35);
+}
+
+.subtitle {
+  margin-top: 1rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-shadow: 0 1px 12px rgba(200, 123, 48, 0.3);
+}
+
+/* Blinkender Cursor am Ende */
+.cursor {
+  display: inline-block;
+  margin-left: 0.05em;
+  color: var(--amber);
+  text-shadow: 0 0 10px rgba(200, 123, 48, 0.5);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
   }
+  50.01%,
   100% {
-    background-position: 200% center;
+    opacity: 0;
   }
 }
 
-.shimmer-text {
-  background: linear-gradient(
-    90deg,
-    var(--color-dark) 0%,
-    #6B7280 20%,
-    var(--color-accent) 40%,
-    #F97066 50%,
-    var(--color-accent) 60%,
-    #6B7280 80%,
-    var(--color-dark) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 7s ease-in-out infinite;
-  padding: 0.1em 0;
-}
-
-/* ── Akzentlinie ── */
+/* ── Warme Trennlinie ── */
 
 .accent-bar {
-  width: 48px;
-  height: 4px;
-  background: var(--color-accent);
-  border-radius: 2px;
+  width: 140px;
+  height: 2px;
+  margin: 0 auto;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold) 35%,
+    var(--amber) 65%,
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(217, 164, 65, 0.35);
+}
+
+.accent-bar:first-child {
+  margin-bottom: 2rem;
+}
+
+.accent-bar:last-child {
+  margin-top: 2rem;
+}
+
+/* ── Spotify Embed ── */
+
+.spotify-wrap {
+  width: 100%;
+  max-width: 32rem;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--ember), var(--gold));
+  box-shadow:
+    0 0 0 1px rgba(217, 164, 65, 0.2),
+    0 8px 30px rgba(0, 0, 0, 0.55),
+    0 0 24px rgba(168, 82, 29, 0.18);
+}
+
+.spotify-wrap iframe {
+  display: block;
+  border-radius: 12px;
+}
+
+/* ── Footer / Impressum ── */
+
+.retro-footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-top: 1px solid rgba(217, 164, 65, 0.18);
+}
+
+.footer-label {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ember);
+  text-shadow: 0 1px 8px rgba(168, 82, 29, 0.3);
+}
+
+.footer-address {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  color: var(--cream-dim);
+  text-shadow: 0 1px 6px rgba(217, 164, 65, 0.2);
 }
