@@ -8,7 +8,13 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col">
       <div className="flex-1 flex items-center justify-center px-6">
-        {motto ? <ShimmerQuote text={motto} /> : <Welcome />}
+        <>
+  {motto ? <ShimmerQuote text={motto} /> : <Welcome />}
+
+  <p className="mt-6 text-center text-gray-500">
+    Wiersch Performance Consulting · KI-Manager (IHK)
+  </p>
+</>
       </div>
 
       <BootcampFooter />
