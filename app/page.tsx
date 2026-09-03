@@ -10,6 +10,7 @@ export default function Home() {
       <div className="flex-1 flex items-center justify-center px-6">
         {motto ? <ShimmerQuote text={motto} /> : <Welcome />}
       </div>
+      <h2>Das ist ein Test meines neuen Features</h2>
 
       <BootcampFooter />
     </main>
