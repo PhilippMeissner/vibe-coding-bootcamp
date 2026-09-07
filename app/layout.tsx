@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Vibe Coding Bootcamp",
-  description: "Deployment & Hosting: Vom Laptop zur Live-App",
+  title: "Vibe Coding Bootcamp — Buchten & Wetter auf Mallorca",
+  description: "Motivation und aktuelles Wetter vor den schönsten Buchten Mallorcas",
 };
 
 export default function RootLayout({
