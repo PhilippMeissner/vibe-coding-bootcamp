@@ -25,22 +25,35 @@ body {
   }
 }
 
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateX(-28px);
+  }
+  50% {
+    transform: translateX(28px);
+  }
+}
+
 .shimmer-text {
-  background: linear-gradient(
+  background: repeating-linear-gradient(
     90deg,
-    var(--color-dark) 0%,
-    #6B7280 20%,
-    var(--color-accent) 40%,
-    #F97066 50%,
-    var(--color-accent) 60%,
-    #6B7280 80%,
-    var(--color-dark) 100%
+    #0055a4 0%,
+    #0055a4 16.66%,
+    #ffffff 16.66%,
+    #ffffff 33.33%,
+    #ef4135 33.33%,
+    #ef4135 50%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 7s ease-in-out infinite;
+  -webkit-text-stroke: 1.5px var(--color-dark);
+  paint-order: stroke fill;
+  animation:
+    shimmer 16s linear infinite,
+    drift 4s ease-in-out infinite;
   padding: 0.1em 0;
 }
 

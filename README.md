@@ -1,3 +1,11 @@
+> **About this repo.** This is my fork of the course repo for session 4 of a vibe coding bootcamp ("Deployment & Hosting: from laptop to live app"). The exercise: connect a Next.js app to Vercel, find out why the first build fails on purpose, add your own content, work with preview deployments and merge to production. My own change is a new UI (`app/globals.css`). The step-by-step guide below is the original course material, in German.
+>
+> What I learned: <!-- TODO: Melanie, please add one or two sentences. -->
+>
+> Melanie Weber · [Portfolio](https://melaniew238githubio.vercel.app) · [LinkedIn](https://linkedin.com/in/melanie-weber-7b7620181)
+
+---
+
 # Vibe Coding Bootcamp — Session 4
 
 Deployment & Hosting: Vom Laptop zur Live-App
